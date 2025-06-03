@@ -3,9 +3,9 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
-                    <span></span> Shop
-                    <span></span> Checkout
+                    <a href="index.html" rel="nofollow">{{ __('messages.home') }}</a>
+                    <span></span>{{ __('messages.shop') }}
+                    <span></span>{{ __('messages.checkout') }}
                 </div>
             </div>
         </div>
@@ -14,11 +14,11 @@
                 <div class="row">
                     <div class="col-lg-6 mb-sm-15">
                         <div class="toggle_info">
-                            <span><i class="fi-rs-user mr-10"></i><span class="text-muted">Already have an account?</span> <a href="#loginform" data-bs-toggle="collapse" class="collapsed" aria-expanded="false">Click here to login</a></span>
+                            <span><i class="fi-rs-user mr-10"></i><span class="text-muted">{{ __('messages.already_have_account') }}</span> <a href="#loginform" data-bs-toggle="collapse" class="collapsed" aria-expanded="false">{{ __('messages.click_to_login') }}</a></span>
                         </div>
                         <div class="panel-collapse collapse login_form" id="loginform">
                             <div class="panel-body">
-                                <p class="mb-30 font-sm">If you have shopped with us before, please enter your details below. If you are a new customer, please proceed to the Billing &amp; Shipping section.</p>
+                                <p class="mb-30 font-sm">{{ __('messages.login_hint') }}</p>
                                 <form method="post">
                                     <div class="form-group">
                                         <input type="text" name="email" placeholder="Username Or Email">
@@ -30,13 +30,13 @@
                                         <div class="chek-form">
                                             <div class="custome-checkbox">
                                                 <input class="form-check-input" type="checkbox" name="checkbox" id="remember" value="">
-                                                <label class="form-check-label" for="remember"><span>Remember me</span></label>
+                                                <label class="form-check-label" for="remember"><span>{{ __('messages.remember_me') }}</span></label>
                                             </div>
                                         </div>
-                                        <a href="#">Forgot password?</a>
+                                        <a href="#">{{ __('messages.forgot_password') }}?</a>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-md" name="login">Log in</button>
+                                        <button class="btn btn-md" name="login">{{ __('messages.log_in') }}</button>
                                     </div>
                                 </form>
                             </div>
@@ -44,17 +44,17 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="toggle_info">
-                            <span><i class="fi-rs-label mr-10"></i><span class="text-muted">Have a coupon?</span> <a href="#coupon" data-bs-toggle="collapse" class="collapsed" aria-expanded="false">Click here to enter your code</a></span>
+                            <span><i class="fi-rs-label mr-10"></i><span class="text-muted">{{ __('messages.have_coupon') }}?</span> <a href="#coupon" data-bs-toggle="collapse" class="collapsed" aria-expanded="false">Click here to enter your code</a></span>
                         </div>
                         <div class="panel-collapse collapse coupon_form " id="coupon">
                             <div class="panel-body">
-                                <p class="mb-30 font-sm">If you have a coupon code, please apply it below.</p>
+                                <p class="mb-30 font-sm">{{ __('messages.coupon_hint') }}</p>
                                 <form method="post">
                                     <div class="form-group">
                                         <input type="text" placeholder="Enter Coupon Code...">
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn  btn-md" name="login">Apply Coupon</button>
+                                        <button class="btn  btn-md" name="login">{{ __('messages.apply_coupon') }}</button>
                                     </div>
                                 </form>
                             </div>
@@ -69,22 +69,22 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-25">
-                            <h4>Billing Details</h4>
+                            <h4>{{ __('messages.billing_details') }}</h4>
                         </div>
                         <form method="post">
                             <div class="form-group">
-                                <input type="text" required="" name="fname" placeholder="First name *">
+                                <input type="text" required="" name="fname" placeholder="{{ __('messages.first_name') }} *">
                             </div>
                             <div class="form-group">
-                                <input type="text" required="" name="lname" placeholder="Last name *">
+                                <input type="text" required="" name="lname" placeholder="{{ __('messages.last_name') }} *">
                             </div>
                             <div class="form-group">
-                                <input required="" type="text" name="cname" placeholder="Company Name">
+                                <input required="" type="text" name="cname" placeholder="{{__('messages.company_name')  }}">
                             </div>
                             <div class="form-group">
                                 <div class="custom_select">
                                     <select class="form-control select-active">
-                                        <option value="">Select an option...</option>
+                                        <option value="">{{ __('messages.select_country') }}...</option>
                                         <option value="AX">Aland Islands</option>
                                         <option value="AF">Afghanistan</option>
                                         <option value="AL">Albania</option>
@@ -333,25 +333,25 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="billing_address" required="" placeholder="Address *">
+                                <input type="text" name="billing_address" required="" placeholder="{{ __('messages.address') }} *">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="billing_address2" required="" placeholder="Address line2">
+                                <input type="text" name="billing_address2" required="" placeholder="{{ __('messages.address_line2') }}">
                             </div>
                             <div class="form-group">
-                                <input required="" type="text" name="city" placeholder="City / Town *">
+                                <input required="" type="text" name="city" placeholder="{{ __('messages.city') }} *">
                             </div>
                             <div class="form-group">
-                                <input required="" type="text" name="state" placeholder="State / County *">
+                                <input required="" type="text" name="state" placeholder="{{ __('messages.state') }}*">
                             </div>
                             <div class="form-group">
-                                <input required="" type="text" name="zipcode" placeholder="Postcode / ZIP *">
+                                <input required="" type="text" name="zipcode" placeholder="{{ __('messages.postcode_zip') }}*">
                             </div>
                             <div class="form-group">
-                                <input required="" type="text" name="phone" placeholder="Phone *">
+                                <input required="" type="text" name="phone" placeholder="{{ __('messages.phone') }} *">
                             </div>
                             <div class="form-group">
-                                <input required="" type="text" name="email" placeholder="Email address *">
+                                <input required="" type="text" name="email" placeholder="{{ __('messages.email_address') }} *">
                             </div>
                             <div class="form-group">
                                 <div class="checkbox">
@@ -386,7 +386,7 @@
                                     <div class="form-group">
                                         <div class="custom_select">
                                             <select class="form-control select-active">
-                                                <option value="">Select an option...</option>
+                                                <option value="">{{ __('messages.select_country') }}...</option>
                                                 <option value="AX">Aland Islands</option>
                                                 <option value="AF">Afghanistan</option>
                                                 <option value="AL">Albania</option>
@@ -635,76 +635,83 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="billing_address" required="" placeholder="Address *">
+                                        <input type="text" name="billing_address" required="" placeholder="{{ __('messages.address') }} *">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="billing_address2" required="" placeholder="Address line2">
+                                        <input type="text" name="billing_address2" required="" placeholder="{{ __('messages.address_line2') }}">
                                     </div>
                                     <div class="form-group">
-                                        <input required="" type="text" name="city" placeholder="City / Town *">
+                                        <input required="" type="text" name="city" placeholder="{{ __('messages.city') }}  *">
                                     </div>
                                     <div class="form-group">
-                                        <input required="" type="text" name="state" placeholder="State / County *">
+                                        <input required="" type="text" name="state" placeholder="{{ __('messages.state') }} *">
                                     </div>
                                     <div class="form-group">
-                                        <input required="" type="text" name="zipcode" placeholder="Postcode / ZIP *">
+                                        <input required="" type="text" name="zipcode" placeholder="{{ __('messages.postcode_zip') }} *">
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-20">
-                                <h5>Additional information</h5>
+                                <h5>{{ __('messages.additional_info') }}</h5>
                             </div>
                             <div class="form-group mb-30">
-                                <textarea rows="5" placeholder="Order notes"></textarea>
+                                <textarea rows="5" placeholder="{{ __('messages.order_notes') }}"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="col-md-6">
                         <div class="order_review">
                             <div class="mb-20">
-                                <h4>Your Orders</h4>
+                                <h4>{{ __('messages.your_orders') }}</h4>
                             </div>
                             <div class="table-responsive order_table text-center">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th colspan="2">Product</th>
-                                            <th>Total</th>
+                                            <th colspan="2">{{ __('messages.product') }}</th>
+                                            <th>{{ __('messages.quantity') }}</th>
+                                            <th>{{ __('messages.total') }}</th>
+                                            <th>{{ __('messages.remove') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                         @foreach(Cart::instance('cart')->content() as $item)
                                         <tr>
-                                            <td class="image product-thumbnail"><img src="{{ asset('assets/imgs/shop/product-1-1.jpg')}}" alt="#"></td>
+                                            <td class="image product-thumbnail"><img src="{{ asset('assets/imgs/products')}}/{{$item->model->image}}" alt="#"></td>
                                             <td>
-                                                <h5><a href="product-details.html">Yidarton Women Summer Blue</a></h5> <span class="product-qty">x 2</span>
+                                                <h5><a href="#">{{$item->model->name}}</a></h5>
                                             </td>
-                                            <td>$180.00</td>
+                                            <td class="text-center" data-title="Stock">
+                                            <div class="detail-qty border radius  m-auto">
+                                                <a href="#" class="qty-down" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')"><i class="fi-rs-angle-small-down"></i></a>
+                                                <span class="qty-val">{{$item->qty}}</span>
+                                                <a href="#" class="qty-up" wire:click.prevent="increaseQuantity('{{$item->rowId}}')"><i class="fi-rs-angle-small-up"></i></a>
+                                            </div>
+                                        </td>
+                                            <td>€{{$item->model->regular_price}}</td>
+                                            <td class="action" data-title="Remove"><a href="#" class="text-muted" wire:click.prevent="destroy('{{$item->rowId}}')"><i class="fi-rs-trash"></i></a></td>
+                                        </tr>
+                                        @endforeach
+                                         <tr>
+                                        <td colspan="5" class="text-end">
+                                            <a href="#" class="text-muted" wire:click.prevent="clearAll()"> <i class="fi-rs-cross-small"></i>{{ __('messages.clear_cart') }}</a>
+                                        </td>
+                                    </tr>
+                                        <tr>
+                                            <th colspan="3">{{ __('messages.subtotal') }}</th>
+                                            <td class="product-subtotal" colspan="2">€{{Cart::subtotal()}}</td>
+                                        </tr>
+                                          <tr>
+                                                    <th colspan="3">{{ __('messages.tax') }}</th>
+                                                    <td colspan="2"><em>€{{Cart::tax()}}</em></td>
+                                            </tr>
+                                        <tr>
+                                            <th colspan="3">{{ __('messages.shipping') }}</th>
+                                            <td colspan="2"><em>{{ __('messages.free_shipping') }}</em></td>
                                         </tr>
                                         <tr>
-                                            <td class="image product-thumbnail"><img src="{{ asset('assets/imgs/shop/product-2-1.jpg')}}" alt="#"></td>
-                                            <td>
-                                                <h5><a href="product-details.html">LDB MOON Women Summe</a></h5> <span class="product-qty">x 1</span>
-                                            </td>
-                                            <td>$65.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="image product-thumbnail"><img src="{{ asset('assets/imgs/shop/product-3-1.jpg')}}" alt="#"></td>
-                                            <td><i class="ti-check-box font-small text-muted mr-10"></i>
-                                                <h5><a href="product-details.html">Women's Short Sleeve Loose</a></h5> <span class="product-qty">x 1</span>
-                                            </td>
-                                            <td>$35.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th>SubTotal</th>
-                                            <td class="product-subtotal" colspan="2">$280.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Shipping</th>
-                                            <td colspan="2"><em>Free Shipping</em></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Total</th>
-                                            <td colspan="2" class="product-subtotal"><span class="font-xl text-brand fw-900">$280.00</span></td>
+                                            <th colspan="3">{{ __('messages.total') }}</th>
+                                            <td colspan="2"><em>€{{Cart::total()}}</em></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -712,24 +719,24 @@
                             <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                             <div class="payment_method">
                                 <div class="mb-25">
-                                    <h5>Payment</h5>
+                                    <h5>{{ __('messages.payment') }}</h5>
                                 </div>
                                 <div class="payment_option">
                                     <div class="custome-radio">
                                         <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios3">
-                                        <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#cashOnDelivery" aria-controls="cashOnDelivery">Cash On Delivery</label>                                        
+                                        <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#cashOnDelivery" aria-controls="cashOnDelivery">{{ __('messages.cash_on_delivery') }}</label>
                                     </div>
                                     <div class="custome-radio">
                                         <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios4">
-                                        <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#cardPayment" aria-controls="cardPayment">Card Payment</label>                                        
+                                        <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#cardPayment" aria-controls="cardPayment">{{ __('messages.card_payment') }}</label>
                                     </div>
                                     <div class="custome-radio">
                                         <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios5">
-                                        <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse" data-target="#paypal" aria-controls="paypal">Paypal</label>                                        
+                                        <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse" data-target="#paypal" aria-controls="paypal">{{ __('messages.paypal') }}</label>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-fill-out btn-block mt-30">Place Order</a>
+                            <a href="#" class="btn btn-fill-out btn-block mt-30">{{ __('messages.place_order') }}</a>
                         </div>
                     </div>
                 </div>

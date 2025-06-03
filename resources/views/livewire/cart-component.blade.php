@@ -4,8 +4,8 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.html" rel="nofollow">Home</a>
-                    <span></span> Shop
-                    <span></span> Your Cart
+                    <span></span> {{ __('messages.shop') }}
+                    <span></span>{{ __('messages.your_cart') }}
                 </div>
             </div>
         </div>
@@ -14,102 +14,80 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="table-responsive">
+                        @if(Session::has('success_message'))
+                                        <div class="alert alert-success">
+                                                <strong>{{ __('messages.success') }} | {{Session::get('success_message')}}</strong>
+                                        </div>
+                         @elseif(Session::has('error_message'))
+                                         <div class="alert alert-danger">
+                                                <strong>{{ __('messages.error') }} | {{ Session::get('error_message') }}</strong>
+                                        </div>
+                                        @endif
+                                    @if(Cart::instance('cart')->count()>0)
                             <table class="table shopping-summery text-center clean">
                                 <thead>
                                     <tr class="main-heading">
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Subtotal</th>
-                                        <th scope="col">Remove</th>
+                                        <th scope="col">{{ __('messages.image') }}</th>
+                                        <th scope="col">{{ __('messages.name') }}</th>
+                                        <th scope="col">{{ __('messages.price') }}</th>
+                                        <th scope="col">{{ __('messages.quantity') }}</th>
+                                        <th scope="col">{{ __('messages.subtotal') }}</th>
+                                        <th scope="col">{{ __('messages.remove') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach(Cart::instance('cart')->content() as $item)
                                     <tr>
-                                        <td class="image product-thumbnail"><img src="{{ asset('assets/imgs/shop/product-1-2.jpg')}}" alt="#"></td>
+                                        <td class="image product-thumbnail"><img src="{{ asset('assets/imgs/products')}}/{{$item->model->image}}" alt="#"></td>
                                         <td class="product-des product-name">
-                                            <h5 class="product-name"><a href="product-details.html">J.Crew Mercantile Women's Short-Sleeve</a></h5>
-                                            <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
-                                            </p>
+                                            <h5 class="product-name"><a href="#">{{$item->model->name}}</a></h5>
+                                            <!-- <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
+                                            </p> -->
                                         </td>
-                                        <td class="price" data-title="Price"><span>$65.00 </span></td>
+                                        <td class="price" data-title="Price"><span>€{{$item->model->regular_price}} </span></td>
                                         <td class="text-center" data-title="Stock">
                                             <div class="detail-qty border radius  m-auto">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                <a href="#" class="qty-down" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')"><i class="fi-rs-angle-small-down"></i></a>
+                                                <span class="qty-val">{{$item->qty}}</span>
+                                                <a href="#" class="qty-up" wire:click.prevent="increaseQuantity('{{$item->rowId}}')"><i class="fi-rs-angle-small-up"></i></a>
                                             </div>
                                         </td>
                                         <td class="text-right" data-title="Cart">
-                                            <span>$65.00 </span>
+                                            <span>€{{$item->subtotal}} </span>
                                         </td>
-                                        <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
+                                        <td class="action" data-title="Remove"><a href="#" class="text-muted" wire:click.prevent="destroy('{{$item->rowId}}')"><i class="fi-rs-trash"></i></a></td>
                                     </tr>
-                                    <tr>
-                                        <td class="image"><img src="{{ asset('assets/imgs/shop/product-11-2.jp')}}g" alt="#"></td>
-                                        <td class="product-des">
-                                            <h5 class="product-name"><a href="product-details.html">Amazon Essentials Women's Tank</a></h5>
-                                            <p class="font-xs">Sit at ipsum amet clita no est,<br> sed amet sadipscing et gubergren</p>
-                                        </td>
-                                        <td class="price" data-title="Price"><span>$75.00 </span></td>
-                                        <td class="text-center" data-title="Stock">
-                                            <div class="detail-qty border radius  m-auto">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">2</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                            </div>
-                                        </td>
-                                        <td class="text-right" data-title="Cart">
-                                            <span>$150.00 </span>
-                                        </td>
-                                        <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="image"><img src="{{ asset('assets/imgs/shop/product-6-1.jpg')}}" alt="#"></td>
-                                        <td class="product-des">
-                                            <h5 class="product-name"><a href="product-details.html">Amazon Brand - Daily Ritual Women's Jersey </a></h5>
-                                            <p class="font-xs">Erat amet et et amet diam et et.<br> Justo amet at dolore
-                                            </p>
-                                        </td>
-                                        <td class="price" data-title="Price"><span>$62.00 </span></td>
-                                        <td class="text-center" data-title="Stock">
-                                            <div class="detail-qty border radius  m-auto">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                            </div>
-                                        </td>
-                                        <td class="text-right" data-title="Cart">
-                                            <span>$62.00 </span>
-                                        </td>
-                                        <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
-                                    </tr>
+                                    @endforeach
+
+
                                     <tr>
                                         <td colspan="6" class="text-end">
-                                            <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>
+                                            <a href="#" class="text-muted" wire:click.prevent="clearAll()"> <i class="fi-rs-cross-small"></i>{{ __('messages.clear_cart') }}</a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            @else
+                                            <p>{{ __('messages.no_item') }}</p>
+                                    @endif
                         </div>
                         <div class="cart-action text-end">
-                            <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a>
-                            <a class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
+                            <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>{{ __('messages.update_cart') }}</a>
+                            <a href="{{ session('last_shopped_url', route('shop')) }}" class="btn "><i class="fi-rs-shopping-bag mr-10"></i>{{ __('messages.continue_shopping') }}</a>
                         </div>
                         <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                         <div class="row mb-50">
                             <div class="col-lg-6 col-md-12">
                                 <div class="heading_s1 mb-3">
-                                    <h4>Calculate Shipping</h4>
+                                    <h4>{{ __('messages.calculate_shipping') }}</h4>
                                 </div>
-                                <p class="mt-15 mb-30">Flat rate: <span class="font-xl text-brand fw-900">5%</span></p>
+                                <p class="mt-15 mb-30">{{ __('messages.flat_rate') }}: <span class="font-xl text-brand fw-900">5%</span></p>
                                 <form class="field_form shipping_calculator">
                                     <div class="form-row">
                                         <div class="form-group col-lg-12">
                                             <div class="custom_select">
                                                 <select class="form-control select-active">
-                                                    <option value="">Choose a option...</option>
+                                                    <option value="">{{ __('messages.choose_option') }}</option>
                                                     <option value="AX">Aland Islands</option>
                                                     <option value="AF">Afghanistan</option>
                                                     <option value="AL">Albania</option>
@@ -360,21 +338,21 @@
                                     </div>
                                     <div class="form-row row">
                                         <div class="form-group col-lg-6">
-                                            <input required="required" placeholder="State / Country" name="name" type="text">
+                                            <input required="required" placeholder="{{ __('messages.state_country') }}" name="name" type="text">
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <input required="required" placeholder="PostCode / ZIP" name="name" type="text">
+                                            <input required="required" placeholder="{{ __('messages.apply_coupon') }}" name="name" type="text">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-lg-12">
-                                            <button class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Update</button>
+                                            <button class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>{{ __('messages.update') }}</button>
                                         </div>
                                     </div>
                                 </form>
                                 <div class="mb-30 mt-50">
                                     <div class="heading_s1 mb-3">
-                                        <h4>Apply Coupon</h4>
+                                        <h4>{{ __('messages.apply_coupon') }}</h4>
                                     </div>
                                     <div class="total-amount">
                                         <div class="left">
@@ -382,10 +360,10 @@
                                                 <form action="#" target="_blank">
                                                     <div class="form-row row justify-content-center">
                                                         <div class="form-group col-lg-6">
-                                                            <input class="font-medium" name="Coupon" placeholder="Enter Your Coupon">
+                                                            <input class="font-medium" name="Coupon" placeholder="{{ __('messages.enter_coupon') }}">
                                                         </div>
                                                         <div class="form-group col-lg-6">
-                                                            <button class="btn  btn-sm"><i class="fi-rs-label mr-10"></i>Apply</button>
+                                                            <button class="btn  btn-sm"><i class="fi-rs-label mr-10"></i>{{ __('messages.apply') }}</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -397,27 +375,36 @@
                             <div class="col-lg-6 col-md-12">
                                 <div class="border p-md-4 p-30 border-radius cart-totals">
                                     <div class="heading_s1 mb-3">
-                                        <h4>Cart Totals</h4>
+                                        <h4>{{ __('messages.cart_totals') }}</h4>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <td class="cart_total_label">Cart Subtotal</td>
-                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">$240.00</span></td>
+                                                    <td class="cart_total_label">{{ __('messages.cart_subtotal') }}
+</td>
+                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">€{{Cart::subtotal()}}</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="cart_total_label">Shipping</td>
-                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
+                                                    <td class="cart_total_label">{{ __('messages.tax') }}</td>
+                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">€{{Cart::tax()}}</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="cart_total_label">Total</td>
-                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">$240.00</span></strong></td>
+                                                    <td class="cart_total_label">{{ __('messages.shipping') }}
+</td>
+                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i>{{ __('messages.free_shipping') }}
+</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="cart_total_label">{{ __('messages.total') }}
+</td>
+                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">€{{Cart::total()}}</span></strong></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a href="checkout.html" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                                    <a href="{{route('shop.checkout')}}" class="btn "> <i class="fi-rs-box-alt mr-10"></i>{{ __('messages.proceed_to_checkout') }}
+</a>
                                 </div>
                             </div>
                         </div>
